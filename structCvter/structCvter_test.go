@@ -10,12 +10,12 @@ type ChildStruct struct {
 }
 
 type MyStruct struct {
-	Abc   string `nick:"NickAbc"`
-	Abcd  float32
-	Ccc   string
-	Child ChildStruct
-	//	Public  string
-	private string
+	OrgName   string `nick:"nickName"`
+	Float     float32
+	String    string
+	ChildStru ChildStruct
+	Hiddden   string `hide:"true"`
+	private   string
 }
 
 type MapStruct struct {
@@ -30,7 +30,7 @@ func init() {
 
 func Test_ModelConvertToJSon(t *testing.T) {
 	println("Test_ModelConvertToJSon")
-	par := MyStruct{"abcd", 1.5, "????", ChildStruct{"child"}, "public"}
+	par := MyStruct{"OrgValue", 9.99, "I am a string", ChildStruct{"child struct"}, "Hiddden value", "private value"}
 	//	par := MyStruct{"a", 1, "c"}
 	str, _err := ToJson(par)
 	println(_err)
@@ -40,7 +40,7 @@ func Test_ModelConvertToJSon(t *testing.T) {
 func Test_ToMap(t *testing.T) {
 
 	println("Test_ToMap")
-	par := MyStruct{"abcd", 1.5, "????", ChildStruct{"child"}, "public"}
+	par := MyStruct{"OrgValue", 9.99, "I am a string", ChildStruct{"child struct"}, "Hiddden value", "private value"}
 	//	par := MyStruct{"a", 1, "c"}
 	ret, err := ToMap(par)
 
@@ -54,7 +54,7 @@ func Test_ToMap(t *testing.T) {
 func Test_StructWithMap(t *testing.T) {
 	println("Test_StructWithMap")
 	m := make(map[string]interface{})
-	mv := MyStruct{"abcd", 1.5, "????", ChildStruct{"child"}, "public"}
+	mv := MyStruct{"OrgValue", 9.99, "I am a string", ChildStruct{"child struct"}, "Hiddden value", "private value"}
 	m["a"] = mv
 	par := MapStruct{m}
 	str, _err := ToJson(par)
@@ -77,11 +77,11 @@ type ComplexStruct struct {
 func Test_ComplexStruct(t *testing.T) {
 	fmt.Println("Test_ComplexStruct")
 	m := make(map[string]interface{})
-	m["a"] = MyStruct{"abcd", 1.5, "????", ChildStruct{"child"}, "public"}
+	m["a"] = MyStruct{"OrgValue", 9.99, "I am a string", ChildStruct{"child struct"}, "Hiddden value", "private value"}
 	m["b"] = "string"
 	m["c"] = 123
 	m["d"] = 1.111
-	child := MyStruct{"abcd", 1.5, "????", ChildStruct{"child"}, "public"}
+	child := MyStruct{"OrgValue", 9.99, "I am a string", ChildStruct{"child struct"}, "Hiddden value", "private value"}
 	stru := ComplexStruct{m, "abc", 9.99, "string aaa", child, "small string"}
 	//stru1 := ComplexStruct{child, "ss"}
 	_map, err := ToMap(stru)

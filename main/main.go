@@ -1,9 +1,9 @@
-# ifStructCvter
-a package to convert  go struct to  map or json
+package main
 
-
-## Example
-```go
+import (
+	"fmt"
+	"ifStructCvter/structCvter"
+)
 
 type ChildStruct struct {
 	Child string `nick:"childNick"`
@@ -40,5 +40,3 @@ func main() {
 		fmt.Println("json:", _json)
 	}
 }
-```
-

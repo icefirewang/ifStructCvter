@@ -45,6 +45,7 @@ func SetNickKey(key string) error {
 	return nil
 }
 
+/* main interface functions */
 func ToJson(in interface{}) (string, error) {
 	_map, err := ToMap(in)
 	if err != nil {
@@ -75,6 +76,7 @@ func ToMap(in interface{}) (map[string]interface{}, error) {
 	return nil, fmt.Errorf("ToMap only accepts structs; got %T", v)
 }
 
+/* private functions */
 func mapToMap(in interface{}) (map[string]interface{}, error) {
 	_map := in.(map[string]interface{})
 	out := make(map[string]interface{})
