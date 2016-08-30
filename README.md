@@ -1,5 +1,14 @@
 # ifStructCvter
-a package to convert  go struct to  map or json
+A package to convert  go struct to  map or json.
+
+If struct has child struct will be ok too.
+
+===
+ 
+一个将 go struct 转化成 map 或者 json 的包。
+
+如果 struct 里面包含 struct，也一样 OK
+
 
 
 ## Example
